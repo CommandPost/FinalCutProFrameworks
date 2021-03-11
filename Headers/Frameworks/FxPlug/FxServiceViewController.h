@@ -6,16 +6,20 @@
 
 #import <ViewBridge/NSServiceViewController.h>
 
-#import <FxPlug/FxServiceViewProtocol-Protocol.h>
+#import <FxPlug/FxServiceViewProtocol_v2-Protocol.h>
 
 @class NSWindow;
+@protocol FxServiceViewControllerDelegate;
 
-@interface FxServiceViewController : NSServiceViewController <FxServiceViewProtocol>
+@interface FxServiceViewController : NSServiceViewController <FxServiceViewProtocol_v2>
 {
     NSWindow *_window;
+    id <FxServiceViewControllerDelegate> delegate;
 }
 
+@property id <FxServiceViewControllerDelegate> delegate; // @synthesize delegate;
 @property(retain, nonatomic) NSWindow *window; // @synthesize window=_window;
+- (void)attachWindowViewControllerForSessionID:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)attachViewControllerForSessionID:(unsigned long long)arg1 andParameter:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)serviceViewControllerProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)serviceViewControllerProxy;

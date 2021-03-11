@@ -62,8 +62,8 @@
     BOOL _isLogProcessingModeNoneOverride;
     _Atomic id _audioSourceDict;
     _Atomic id _provider;
+    _Atomic int _hasClosedCaptionTrack;
     BOOL _mediaOnlineSinceLastNotification;
-    int _hasClosedCaptionTrack;
 }
 
 + (id)repTypeForMaskBit:(int)arg1;
@@ -80,7 +80,6 @@
 + (BOOL)classIsAbstract;
 + (id)assetDisplayNameFromURL:(id)arg1;
 + (id)errorForHTTPStatusCode:(long long)arg1;
-@property(nonatomic) int hasClosedCaptionTrack; // @synthesize hasClosedCaptionTrack=_hasClosedCaptionTrack;
 @property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
 @property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
 @property(readonly, nonatomic, getter=isMissingCameraLUT) BOOL missingCameraLUT; // @synthesize missingCameraLUT=_missingCameraLUT;
@@ -314,6 +313,7 @@
 - (void)updateIdentityWithMD5String:(id)arg1 externalMediaIdentifier:(id)arg2;
 - (void)updateIdentity;
 - (BOOL)hasCameraTag;
+@property(nonatomic) int hasClosedCaptionTrack;
 @property(readonly, nonatomic) unsigned long long expectedGrowthRefreshRate;
 @property(readonly, nonatomic) BOOL isGrowing;
 - (BOOL)_needToReplaceMediaRepType:(id)arg1 fromNewAsset:(id)arg2 whenBothOnline:(BOOL)arg3 whenBothOffline:(BOOL)arg4 whenBothAbsent:(BOOL)arg5;

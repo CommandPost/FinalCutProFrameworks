@@ -50,6 +50,7 @@
 - (BOOL)buildInEnabled;
 - (BOOL)supportsOptionalBuildIn;
 - (BOOL)allowsAlignmentEditing;
+- (void)adjustImportedTextForAutoShrink:(BOOL)arg1;
 - (void)adjustImportedTextForField:(unsigned long long)arg1;
 @end
 

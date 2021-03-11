@@ -224,7 +224,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)schedulingComplete;
 - (void)queueUrgentSchedule:(id)arg1;
 - (_Bool)_scheduleInternal;
-- (_Bool)_precalculateMD5_magicFrame_andCheckForLoadingFX:(id)arg1;
+- (_Bool)_precalculateMD5_magicFrame_andCheckForLoadingFX:(id)arg1 retCancelForWL:(_Bool *)arg2;
 - (CDStruct_1b6d18a9)timeForContextNumber:(int)arg1;
 - (void)schedule;
 - (_Bool)usableFor:(id)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5 context1:(id)arg6 context2:(id)arg7 aaContext:(id)arg8 aaRepeats:(int)arg9;

@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (id)displayName;
 - (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (void)rangeInvalidated:(id)arg1;
 - (void)_removeStreamFromOpenStreamsList:(id)arg1;
 - (id)_source;

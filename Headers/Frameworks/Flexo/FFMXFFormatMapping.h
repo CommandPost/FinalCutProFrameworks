@@ -20,8 +20,7 @@ __attribute__((visibility("hidden")))
 + (int)checkException:(int)arg1 countAudioChannels:(int)arg2;
 + (int)isMXFAlowed:(id)arg1 audioSampleRate:(double)arg2;
 + (id)getRenderFormatByFCC:(id)arg1;
-+ (CDStruct_2689111f)getApertureByFileType:(int)arg1 videoFormatKey:(id)arg2;
-+ (id)getShortFormatByFileType:(int)arg1;
++ (BOOL)getIsSDAnamorph:(id)arg1;
 + (id)getFileTypeStringByFileType:(int)arg1;
 + (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3 countAudioChannels:(int)arg4;
 + (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3;

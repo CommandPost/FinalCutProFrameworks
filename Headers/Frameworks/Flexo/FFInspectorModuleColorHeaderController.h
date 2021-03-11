@@ -6,7 +6,7 @@
 
 #import <ProInspector/OZFolderGroupController.h>
 
-@class FFAddMaskButton, FFAnchoredObject, FFButtonWithRolloverHighlight, FFChannelChangeController, FFEffect, LKButton, LKMenu, LKPopUpButton, NSTrackingArea;
+@class FFAddMaskButton, FFAnchoredObject, FFButtonWithRolloverHighlight, FFChannelChangeController, FFEffect, LKButton, LKMenu, LKPopUpButton, NSLayoutConstraint, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleColorHeaderController : OZFolderGroupController
@@ -29,11 +29,13 @@ __attribute__((visibility("hidden")))
     NSTrackingArea *_pTrackingArea;
     BOOL _mouseOver;
     BOOL _lastMouseOver;
+    NSLayoutConstraint *_popupLeadingConstraint;
 }
 
 - (BOOL)isMouseInLabelView:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)awakeFromNib;
 - (struct OZChannelBase *)associatedChannel;
 - (void)_libraryClosed:(id)arg1;
 - (void)_removeSelectedItemObserving;

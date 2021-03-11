@@ -33,6 +33,7 @@
 - (void)addDocumentBlockedPlugin:(id)arg1;
 - (void)addLibraryBlockedPlugin:(id)arg1 bundleName:(id)arg2 pluginName:(id)arg3 version:(id)arg4;
 - (BOOL)bundleIsDeferred:(id)arg1;
+- (void)removePlugin:(id)arg1;
 - (void)removeDeferredPluginBundle:(id)arg1;
 - (id)deferredPluginKitPlugs;
 - (void)loadDeferredPlugin:(id)arg1;

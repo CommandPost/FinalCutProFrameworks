@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property NSTextField *subtitleTextField; // @synthesize subtitleTextField=_subtitleTextField;
 @property NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField;
 @property NSStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
+- (void)addAccessoryViewsForNode:(id)arg1;
 - (void)dealloc;
 - (void)titleEditAction:(id)arg1;
 - (void)prepareForReuse;

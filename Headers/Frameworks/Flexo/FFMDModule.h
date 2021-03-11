@@ -16,6 +16,7 @@
     NSView *_proHeaderView;
     LKSearchField *_searchField;
     NSString *_searchFieldText;
+    BOOL _respondingToFirstResponderChange;
 }
 
 + (BOOL)shouldDisplayAppleTVApp;

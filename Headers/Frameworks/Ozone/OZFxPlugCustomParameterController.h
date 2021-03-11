@@ -19,6 +19,7 @@
 + (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
 @property(readonly, nonatomic) NSView *customView; // @synthesize customView=_customView;
+- (id)_labelController;
 - (float)suggestedMaxParamWidth;
 - (void)update;
 - (void)_subviewsNeedDisplay:(id)arg1;

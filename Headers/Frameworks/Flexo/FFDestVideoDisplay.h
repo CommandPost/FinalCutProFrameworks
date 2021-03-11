@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct FFSynchronizable *_frameQueueLock;
     NSMutableArray *_frameQueue;
     FFPlayerFrame *_lastSelectedFrame;
+    int _DEBUG_playbackRepeatsOfLastSelectedFrame;
     unsigned int _normalQueueSize;
     CDStruct_1b6d18a9 _normalQueueDuration;
     unsigned int _maxQueueCapacity;

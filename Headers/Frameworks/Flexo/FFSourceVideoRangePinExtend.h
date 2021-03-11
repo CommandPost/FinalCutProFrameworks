@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (Class)streamClass;
 - (id)nativeVideoProps;
 - (CDStruct_e83c9415)timeRange;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1;
 - (void)rangePinExtendVideoRangeInvalidated:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 + (void)initialize;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

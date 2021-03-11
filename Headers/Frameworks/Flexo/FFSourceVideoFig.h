@@ -87,7 +87,7 @@
 - (id)_lookupCachedPTForQualityAlreadyLocked:(int)arg1 lineSel:(int)arg2;
 - (id)_getCachedInfo:(int)arg1;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (CDStruct_bdcb2b0d)_vendorSpecificDecodeMD5Adjustment:(id)arg1;
 - (id)_newSubRangeMD5InfoForSampleDurationFromCache:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationUncached:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
@@ -127,6 +127,7 @@
 - (CDStruct_e83c9415)timeRange;
 - (CDStruct_1b6d18a9)nativeFrameDuration;
 - (id)_trueNativeVideoProps;
+- (BOOL)hasUnsupportedDolbyVisionProfile;
 - (struct opaqueCMFormatDescription *)videoFormatDescription;
 - (CDStruct_1b6d18a9)fileTrackDuration;
 - (CDStruct_1b6d18a9)fileNativeSampleDuration;

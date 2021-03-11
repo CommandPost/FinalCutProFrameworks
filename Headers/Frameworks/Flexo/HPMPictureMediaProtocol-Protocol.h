@@ -16,8 +16,11 @@
 @property(readonly) const struct CTMScanInfo *scanInfo;
 @property(readonly) CDStruct_2689111f aspectRatio;
 @property(readonly) int displayYOffset;
+@property(readonly) int displayXOffset;
 @property(readonly) unsigned int storedHeight;
 @property(readonly) unsigned int storedWidth;
+@property(readonly) unsigned int sampledFrameHeight;
+@property(readonly) unsigned int sampledWidth;
 @property(readonly) unsigned int frameHeight;
 @property(readonly) unsigned int width;
 - (unsigned int)uint32PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;

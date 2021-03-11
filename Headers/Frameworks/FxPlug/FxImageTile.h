@@ -25,6 +25,9 @@
     unsigned long long imageSource;
     NSError *requestError;
     unsigned long long colorSpaceType;
+    double scaleX;
+    double scaleY;
+    double pixelAspect;
     unsigned long long usage;
     struct FxRect tilePixelBounds;
     struct FxRect imagePixelBounds;
@@ -33,6 +36,9 @@
 
 + (BOOL)supportsSecureCoding;
 @property unsigned long long usage; // @synthesize usage;
+@property(readonly, nonatomic) double pixelAspect; // @synthesize pixelAspect;
+@property(readonly, nonatomic) double scaleY; // @synthesize scaleY;
+@property(readonly, nonatomic) double scaleX; // @synthesize scaleX;
 @property unsigned long long colorSpaceType; // @synthesize colorSpaceType;
 @property(readonly, copy, nonatomic) NSError *requestError; // @synthesize requestError;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 mediaTime; // @synthesize mediaTime;
@@ -59,7 +65,7 @@
 - (void)ioSurfacePixelFormat:(unsigned int)arg1 toOpenGLPixelFormat:(unsigned int *)arg2 type:(unsigned int *)arg3 internalFormat:(unsigned int *)arg4;
 - (BOOL)contextIsFromSameRenderer:(struct _CGLContextObject *)arg1;
 - (void)dealloc;
-- (id)initWithTilePixelBounds:(struct FxRect)arg1 imagePixelBounds:(struct FxRect)arg2 pixelTransform:(id)arg3 inversePixelTransform:(id)arg4 field:(unsigned long long)arg5 fieldOrder:(unsigned long long)arg6 eyeType:(int)arg7 imageOrigin:(unsigned long long)arg8 IOSurface:(id)arg9 deviceRegistryID:(unsigned long long)arg10 imageSource:(unsigned long long)arg11 parameterID:(unsigned int)arg12 mediaTime:(CDStruct_1b6d18a9)arg13 requestError:(id)arg14 colorSpace:(unsigned long long)arg15 usage:(unsigned long long)arg16;
+- (id)initWithTilePixelBounds:(struct FxRect)arg1 imagePixelBounds:(struct FxRect)arg2 pixelTransform:(id)arg3 inversePixelTransform:(id)arg4 field:(unsigned long long)arg5 fieldOrder:(unsigned long long)arg6 eyeType:(int)arg7 imageOrigin:(unsigned long long)arg8 IOSurface:(id)arg9 deviceRegistryID:(unsigned long long)arg10 imageSource:(unsigned long long)arg11 parameterID:(unsigned int)arg12 mediaTime:(CDStruct_1b6d18a9)arg13 requestError:(id)arg14 colorSpace:(unsigned long long)arg15 scaleX:(double)arg16 scaleY:(double)arg17 pixelAspect:(double)arg18 usage:(unsigned long long)arg19;
 
 @end
 

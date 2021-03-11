@@ -14,7 +14,7 @@
 + (Class)streamClass;
 @property(readonly, nonatomic) FFSourceVideo *delegateSource; // @synthesize delegateSource=_delegateSource;
 - (id)description;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (id)renderFormat:(id)arg1;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (int)rotationDegrees;

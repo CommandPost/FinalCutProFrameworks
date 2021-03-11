@@ -146,7 +146,6 @@
     BOOL _deferImportOutOfDiskSpaceError;
     unsigned int _deferredRoleChangeOperationPreflightResults;
     FFAnchoredTimeMarker *_highlightedMarker;
-    int _pendingSetRenderInfoNeedsDisplay;
     int _channelChangeCount;
     int _channelChangeAction;
     FFShareHelper *_shareHelper;
@@ -169,6 +168,7 @@
     CDStruct_1b6d18a9 _committedPlayheadTime;
     CDStruct_e83c9415 _listeningSequenceRange;
     FFAnchoredSequence *_activeRootItemChangingPreviousSequence;
+    _Atomic int _pendingSetRenderInfoNeedsDisplay;
     BOOL _shouldCancelTemporaryToolOverride;
     BOOL _tempToolOverrideActive;
     BOOL _allowsAudioInSpine;

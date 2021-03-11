@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class FxRemoteTiming, NSDate, NSLock, NSMutableDictionary, NSString, NSTimer;
+#import <FxPlug/FxServiceViewControllerDelegate-Protocol.h>
+
+@class FxRemoteTiming, NSDate, NSLock, NSMutableDictionary, NSString, NSTimer, NSViewController;
 @protocol FxTileableEffect, PROAPIAccessing;
 
-@interface FxRemotePlugin : NSObject
+@interface FxRemotePlugin : NSObject <FxServiceViewControllerDelegate>
 {
     id <PROAPIAccessing> apiManager;
     unsigned long long sessionID;
@@ -20,6 +22,7 @@
     FxRemoteTiming *oscTimingData;
     NSDate *lastUpdate;
     NSTimer *updateTimer;
+    NSViewController *windowViewController;
     NSMutableDictionary *viewControllers;
     long long analysisLocation;
 }
@@ -28,7 +31,11 @@
 @property(retain) NSMutableDictionary *viewControllers; // @synthesize viewControllers;
 - (id)OSCTiming;
 - (void)setupOSCTiming:(id)arg1;
+- (void)controllerDestroyed;
+- (id)windowContentView;
+- (void)setWindowViewController:(id)arg1;
 - (void)updateCustomViews;
+- (void)removeParameterViewControllers;
 - (id)viewControllersForParameter:(unsigned int)arg1;
 - (void)setViewController:(id)arg1 forParameter:(unsigned int)arg2;
 - (void)performSelectorNamed:(id)arg1 forParameterID:(unsigned int)arg2;

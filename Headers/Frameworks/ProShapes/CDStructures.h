@@ -118,6 +118,7 @@ struct OZChannelButton {
     struct PCString _field21;
     void *_field22;
     struct PCString _field23;
+    _Bool _field24;
 };
 
 struct OZChannelColorNoAlpha {

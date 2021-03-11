@@ -34,6 +34,7 @@
 - (void)_updateNodeAndChildrenAndOutlineView;
 - (BOOL)_updateNodeAndChildren:(id)arg1;
 - (void)reload:(BOOL)arg1;
+- (id)outlineCellView;
 - (id)eventMediaSidebarController;
 - (id)sidebarController;
 - (BOOL)_isRootOfOutlineView;

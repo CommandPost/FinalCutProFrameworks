@@ -48,12 +48,12 @@
 - (void)_recalculateInBackground;
 - (void)cancelBackgroundOps;
 - (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
-- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1 checkForTaskCancel:(CDUnknownBlockType)arg2;
 - (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 segmentMD5s:(CDStruct_bdcb2b0d *)arg5 diskMD5s:(CDStruct_bdcb2b0d *)arg6 hasData:(char *)arg7 context:(id)arg8;
 - (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 segmentMD5:(CDStruct_bdcb2b0d *)arg7 diskMD5:(CDStruct_bdcb2b0d *)arg8 context:(id)arg9;
 - (void)checkRangesAndMD5sForRecentlyCreatedRenderFiles:(id)arg1 md5s:(id)arg2;
 - (void)checkRangeAndMD5sForRecentlyCreatedRenderFiles:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
-- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1 checkForTaskCancel:(CDUnknownBlockType)arg2;
 - (id)md5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
 - (id)_internalmd5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
 - (id)md5sInUse;

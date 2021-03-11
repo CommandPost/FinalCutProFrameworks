@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateSegmentMD5InfoCacheForRange:(const CDStruct_e83c9415 *)arg1;
 - (id)_newSegmentSourceAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 offset:(CDStruct_1b6d18a9 *)arg3 range:(CDStruct_e83c9415 *)arg4 streamid:(id *)arg5;
 - (id)_dumpCache;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (void)_addSubRangeMD5InfoToCache:(id)arg1 forSD:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoFromCacheForSDandQualitySettings:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (void)_removeStreamFromOpenStreamsList:(id)arg1;

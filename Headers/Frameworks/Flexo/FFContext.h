@@ -16,13 +16,7 @@
     double _rate;
     BOOL _forSingleStreamSkimming;
     int _quality;
-    int _qualityChanged;
     int _temporalQuality;
-    int _temporalQualityChanged;
-    int _streamAudioFlagsChanged;
-    int _loopRangeStartReached;
-    int _loopRangeEndReached;
-    int _rangeChanged;
     FFPlayer *_player;
     FFDestAudio *_audioDest;
     unsigned int _streamAudioFlags;
@@ -30,9 +24,6 @@
     NSMapTable *_showObjectsOptions;
     BOOL _showObjectTime;
     NSSet *_roles;
-    int _showObjectsChanged;
-    int _showObjectsOptionsChanged;
-    int _rolesChanged;
     id selectionHandler;
     BOOL _isSkimming;
     BOOL _inStepPlayback;
@@ -53,7 +44,16 @@
     long long _numDraftTextModeRequests;
     NSMutableSet *_registeredPlayerModules;
     BOOL _pendingRebuildPlayers;
-    _Atomic int _timeRateChanged;
+    struct atomic_flag _timeRateChanged;
+    struct atomic_flag _qualityChanged;
+    struct atomic_flag _temporalQualityChanged;
+    struct atomic_flag _streamAudioFlagsChanged;
+    struct atomic_flag _loopRangeStartReached;
+    struct atomic_flag _loopRangeEndReached;
+    struct atomic_flag _rangeChanged;
+    struct atomic_flag _showObjectsChanged;
+    struct atomic_flag _showObjectsOptionsChanged;
+    struct atomic_flag _rolesChanged;
 }
 
 + (int)temporalQualityForFramesPerPixel:(unsigned int)arg1;
@@ -123,6 +123,7 @@
 - (void)setQuality:(int)arg1;
 - (CDStruct_e83c9415)range;
 - (void)setRange:(CDStruct_e83c9415)arg1;
+- (void)dispatchSelectorOnMainThread:(SEL)arg1 withObject:(id)arg2 andAtomic:(struct atomic_flag *)arg3;
 - (void)getTime:(CDStruct_1b6d18a9 *)arg1 rate:(double *)arg2 forSingleStreamSkimming:(char *)arg3;
 - (double)rate;
 - (CDStruct_1b6d18a9)timeUsingPlayerSampleRate;

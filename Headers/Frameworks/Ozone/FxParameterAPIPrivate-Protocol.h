@@ -8,6 +8,9 @@
 @protocol NSCoding;
 
 @protocol FxParameterAPIPrivate
+- (void)endBulkChanges;
+- (void)startBulkChanges;
+- (BOOL)handleBulkKeyframeUpdates:(NSArray *)arg1 parameterUpdates:(NSArray *)arg2 errors:(id *)arg3;
 - (void)setHandlingOSCEvents:(BOOL)arg1;
 - (BOOL)imageSize:(struct CGSize *)arg1 fromParameter:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (FxParameterTransaction *)transactionForParameterID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2 transactionID:(unsigned long long)arg3 pluginSessionID:(unsigned long long)arg4;

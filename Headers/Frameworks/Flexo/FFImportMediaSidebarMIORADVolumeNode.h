@@ -6,12 +6,12 @@
 
 #import <Flexo/FFMediaSidebarNode.h>
 
-#import <Flexo/FFImportMediaSidebarCellAdornmentProtocol-Protocol.h>
+#import <Flexo/FFImportMediaSidebaNodeAdornmentProtocol-Protocol.h>
 
 @class NSButton, NSProgressIndicator;
 
 __attribute__((visibility("hidden")))
-@interface FFImportMediaSidebarMIORADVolumeNode : FFMediaSidebarNode <FFImportMediaSidebarCellAdornmentProtocol>
+@interface FFImportMediaSidebarMIORADVolumeNode : FFMediaSidebarNode <FFImportMediaSidebaNodeAdornmentProtocol>
 {
     BOOL _settitngTitle;
     BOOL _ejecting;
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property unsigned long long state; // @synthesize state=_state;
 - (id)leftAdornmentView;
 - (id)rightAdornmentView;
-- (void)redraw;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateAdornmentViews;
 - (id)descriptionForState:(unsigned long long)arg1;

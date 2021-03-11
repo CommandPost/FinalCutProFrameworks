@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)setOverrideAlphaValue:(int)arg1;
 - (id)supportedOverrideAlphaModes;
 - (int)getNativeAlphaType;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (BOOL)nativelyFloat;
 - (id)nativeVideoProps;
 - (id)renderFormat:(id)arg1;

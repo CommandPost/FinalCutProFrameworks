@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (unsigned int)exportCodecType;
 - (void)setExportCodecType:(unsigned int)arg1;
 

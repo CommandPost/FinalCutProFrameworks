@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForField:(unsigned long long)arg1;
 - (unsigned long long)textFieldCount;
 - (id)adjustAttributedString:(id)arg1 withInfo:(id)arg2;
+- (void)adjustImportedTextForAutoShrink:(BOOL)arg1;
 - (void)adjustImportedTextForField:(unsigned long long)arg1;
 - (BOOL)isMultiline;
 - (BOOL)wantsXMLStyledText;

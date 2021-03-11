@@ -59,6 +59,7 @@
 + (void)setUserDestinationsDictionaryPathComponent:(id)arg1;
 + (void)setShareDestinationFileExtension:(id)arg1;
 + (id)newDestinationWithType:(id)arg1;
++ (void)removeUnsupportedDestinationsFromBundle:(id)arg1 alertIfNot:(BOOL)arg2;
 + (id)addUserDestinationFromURL:(id)arg1;
 + (void)restoreStandardDestinations;
 + (id)standardDestinations:(id *)arg1;
@@ -120,6 +121,7 @@
 - (id)initWithName:(id)arg1 type:(id)arg2 setting:(id)arg3;
 - (id)initWithName:(id)arg1;
 - (id)init;
+- (BOOL)isSupportedAlertIfNot:(BOOL)arg1;
 - (id)destinationWithOriginalSettings;
 @property(readonly, nonatomic) NSString *taskIdentifier;
 @property(readonly) BOOL forCurrentFrameOnly;

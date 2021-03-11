@@ -4,22 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FxKeyframeParameterTransaction, FxOSCTransaction, FxParameterTransaction;
+@class FxKeyframeParameterTransaction, FxOSCTransaction, FxParameterTransaction, NSArray, NSString;
 
 @protocol FxRemoteHostAPIProtocol
+- (void)hostSession:(unsigned long long)arg1 createWindowOfSize:(struct CGSize)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSessionDocumentID:(unsigned long long)arg1 reply:(void (^)(BOOL, unsigned long long, NSError *))arg2;
 - (void)hostSessionMediaURL:(unsigned long long)arg1 reply:(void (^)(BOOL, NSData *, NSData *, NSError *))arg2;
 - (void)hostSession:(unsigned long long)arg1 movePlayheadTo:(CDStruct_1b6d18a9)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 performCommand:(unsigned long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 get3DDataAtTime:(CDStruct_1b6d18a9)arg2 reply:(void (^)(BOOL, NSError *, NSData *))arg3;
+- (void)hostSession:(unsigned long long)arg1 startAnalysisTransaction:(BOOL)arg2 transactionID:(unsigned long long)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)hostSession:(unsigned long long)arg1 startAnalysis:(BOOL)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processOSCTransaction:(FxOSCTransaction *)arg2 reply:(void (^)(FxOSCTransaction *))arg3;
+- (void)hostSession:(unsigned long long)arg1 bulkKeyframeTransaction:(NSArray *)arg2 bulkParameterTransaction:(NSArray *)arg3 undoGroupName:(NSString *)arg4 reply:(void (^)(BOOL, NSArray *))arg5;
 - (void)hostSession:(unsigned long long)arg1 handleUndoTransaction:(FxParameterTransaction *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 currentTime:(void (^)(struct, NSError *))arg3;
+- (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 parameterUpdates:(NSArray *)arg3 endCustomParameterAction:(void (^)(NSError *))arg4;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 endCustomParameterAction:(void (^)(NSError *))arg3;
+- (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startActionWithParameters:(void (^)(NSArray *, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startCustomParameterAction:(void (^)(NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processKeyframeTransaction:(FxKeyframeParameterTransaction *)arg2 reply:(void (^)(BOOL, FxParameterTransaction *, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processDynamic:(FxParameterTransaction *)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(void (^)(BOOL, FxParameterTransaction *, NSError *))arg4;
+- (void)hostSession:(unsigned long long)arg1 processParameters:(NSArray *)arg2;
+- (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 transactionID:(unsigned long long)arg3 reply:(void (^)(BOOL, NSArray *, NSError *))arg4;
 - (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 reply:(void (^)(BOOL, NSArray *, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 getFlagsFromParameter:(unsigned int)arg2 transactionID:(unsigned long long)arg3 reply:(void (^)(BOOL, unsigned int, NSError *))arg4;
 - (void)hostSession:(unsigned long long)arg1 addParameter:(FxParameterTransaction *)arg2 reply:(void (^)(BOOL, NSError *))arg3;

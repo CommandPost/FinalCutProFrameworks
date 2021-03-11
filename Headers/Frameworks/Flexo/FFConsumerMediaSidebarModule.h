@@ -44,6 +44,9 @@
 - (void)setupContentLibrarySidebar;
 - (void)syncSidebar;
 - (id)contentLayoutDictionary;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotifications;
+- (void)installNotifications;
 - (void)viewDidLoad;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;

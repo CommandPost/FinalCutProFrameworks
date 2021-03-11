@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct MXFColorSpace *colorSpace;
 @property(readonly, copy) NSString *debugDescription;
 @property struct __CFDictionary *descriptiveMetadata;
+@property(readonly) int displayXOffset;
 @property(readonly) int displayYOffset;
 @property(readonly) CDStruct_2689111f editRate;
 @property(readonly) int essenceType;
@@ -72,6 +73,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long origin;
 @property(readonly) long long originInSamples;
 @property(readonly) CDStruct_2689111f sampleRate;
+@property(readonly) unsigned int sampledFrameHeight;
+@property(readonly) unsigned int sampledWidth;
 @property(readonly) const struct CTMScanInfo *scanInfo;
 @property(readonly) long long startPosition;
 @property(readonly) unsigned int storedHeight;

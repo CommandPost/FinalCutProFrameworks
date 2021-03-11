@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (Class)defaultAdjustmentToolForEffect;
 - (id)designatedChannelsForXMLExport;
 - (BOOL)hasDesignatedChannelsForXMLExport;
+- (void)adjustImportedTextForAutoShrink:(BOOL)arg1;
 - (void)adjustImportedTextForField:(unsigned long long)arg1;
 - (id)defaultTextForField:(unsigned long long)arg1;
 - (BOOL)setLightGrayBackgroundForField:(unsigned long long)arg1;

@@ -20,9 +20,11 @@
 + (void)startServicePrincipal;
 + (id)embeddedPrincipal;
 + (id)sharedPrincipal;
++ (unsigned long long)xpcConnectionVersion;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property struct FxConnectionMap connectionMap; // @synthesize connectionMap;
+- (BOOL)associateViewController:(id)arg1 withSessionID:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)associateViewController:(id)arg1 withSessionID:(unsigned long long)arg2 andParameterID:(unsigned int)arg3 viewFrame:(struct CGRect *)arg4 viewSizingOptions:(unsigned long long *)arg5 error:(id *)arg6;
 - (void)dynamicRegistrationEndpointForProcessID:(int)arg1 version:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)viewServiceListenerEndPoint:(CDUnknownBlockType)arg1;

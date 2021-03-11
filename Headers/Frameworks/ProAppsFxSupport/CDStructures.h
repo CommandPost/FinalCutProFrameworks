@@ -343,6 +343,9 @@ struct ImageTileDescriptor {
     CDStruct_198678f7 _field11;
     id _field12;
     unsigned long long _field13;
+    double _field14;
+    double _field15;
+    double _field16;
 };
 
 struct OZChannel {
@@ -481,6 +484,11 @@ struct PCRect<float> {
     float _field2;
     float _field3;
     float _field4;
+};
+
+struct PCRecursiveMutex {
+    CDUnknownFunctionPointerType *_vptr$PCMutex;
+    struct _opaque_pthread_mutex_t _Mutex;
 };
 
 struct PCSharedCount {
@@ -1718,6 +1726,18 @@ struct set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGN
     } _field1;
 };
 
+struct set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long>> {
+    struct __tree<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::less<unsigned long>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct unique_ptr<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>, std::__1::default_delete<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>>> {
     struct __compressed_pair<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>*, std::__1::default_delete<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>>> {
         struct PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock> *__value_;
@@ -1895,6 +1915,18 @@ typedef struct map<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore
 typedef struct queue<FxParameterTransaction *, std::__1::deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>>> {
     struct deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> c;
 } queue_a1617091;
+
+typedef struct set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long>> {
+    struct __tree<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::less<unsigned long>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} set_0f820a0b;
 
 typedef struct vector<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> {
     id *__begin_;

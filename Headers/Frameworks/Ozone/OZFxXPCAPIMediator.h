@@ -16,6 +16,8 @@
     BOOL appIsTerminating;
 }
 
+- (void)hostSession:(unsigned long long)arg1 createWindowOfSize:(struct CGSize)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)addViewToWindow:(id)arg1 windowRef:(long long)arg2 sessionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)hostSessionDocumentID:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)hostSessionMediaURL:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)hostSession:(unsigned long long)arg1 movePlayheadTo:(CDStruct_1b6d18a9)arg2 reply:(CDUnknownBlockType)arg3;
@@ -24,14 +26,21 @@
 - (id)lkCommandForFxCommand:(unsigned long long)arg1;
 - (void)hostSession:(unsigned long long)arg1 get3DDataAtTime:(CDStruct_1b6d18a9)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)renderState:(struct OZRenderState *)arg1 atTime:(CDStruct_1b6d18a9)arg2 forPluginInstance:(struct OZFxPlugSharedBase *)arg3;
+- (void)hostSession:(unsigned long long)arg1 startAnalysisTransaction:(BOOL)arg2 transactionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)hostSession:(unsigned long long)arg1 startAnalysis:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processOSCTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 handleUndoTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 currentTime:(CDUnknownBlockType)arg3;
+- (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 parameterUpdates:(id)arg3 endCustomParameterAction:(CDUnknownBlockType)arg4;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 endCustomParameterAction:(CDUnknownBlockType)arg3;
+- (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startActionWithParameters:(CDUnknownBlockType)arg3;
+- (id)processThenWaitForTransactionsOfType:(int)arg1 transactionID:(unsigned long long)arg2 transactionSemaphore:(id)arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startCustomParameterAction:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processKeyframeTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processDynamic:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)hostSession:(unsigned long long)arg1 processParameters:(id)arg2;
+- (void)hostSession:(unsigned long long)arg1 bulkKeyframeTransaction:(id)arg2 bulkParameterTransaction:(id)arg3 undoGroupName:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 transactionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 getFlagsFromParameter:(unsigned int)arg2 transactionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)hostSession:(unsigned long long)arg1 setValue:(id)arg2 toParameter:(unsigned int)arg3 atTime:(CDStruct_1b6d18a9)arg4 reply:(CDUnknownBlockType)arg5;
@@ -39,7 +48,7 @@
 - (void)hostSession:(unsigned long long)arg1 addParameter:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 setVersionAtCreation:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (BOOL)documentID:(unsigned long long *)arg1 forMotionEffect:(id)arg2 error:(id *)arg3;
-- (id)waitForTransactionsOfType:(int)arg1 toClearForInstance:(id)arg2 transactionID:(unsigned long long)arg3 transactionSemaphore:(id)arg4;
+- (id)waitForTransactionsOfType:(int)arg1 transactionID:(unsigned long long)arg2 transactionSemaphore:(id)arg3;
 - (struct OZFxPlugSharedBase *)pluginInstanceForSessionID:(unsigned long long)arg1 withError:(id *)arg2;
 - (void)dealloc;
 - (id)initWithPluginUUID:(id)arg1;

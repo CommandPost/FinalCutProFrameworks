@@ -8,13 +8,13 @@
 
 #import <FxPlug/FxRemoteTileablePluginProtocol-Protocol.h>
 
-@class NSLock, NSMutableDictionary, NSXPCConnection;
+@class NSMutableDictionary, NSRecursiveLock, NSXPCConnection;
 
 @interface FxRemotePluginCoordinator : NSObject <FxRemoteTileablePluginProtocol>
 {
     NSXPCConnection *hostConnection;
     NSMutableDictionary *pluginSessions;
-    NSLock *sessionLock;
+    NSRecursiveLock *sessionLock;
 }
 
 - (void)pluginSession:(unsigned long long)arg1 setHostKeyCommands:(id)arg2;
@@ -27,20 +27,31 @@
 - (void)setupAnalysisConnection:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)tileablePlugin:(unsigned long long)arg1 isLeftValue:(id)arg2 equalTo:(id)arg3 forParameterID:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)tileablePlugin:(unsigned long long)arg1 interpolateLeftData:(id)arg2 rightData:(id)arg3 atPercent:(float)arg4 forParameter:(unsigned int)arg5 reply:(CDUnknownBlockType)arg6;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseExitedAtPosition:(struct CGPoint)arg2 modifiers:(unsigned long long)arg3 oscData:(id)arg4 parameters:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseExitedAtPositionX:(double)arg2 positionY:(double)arg3 modifiers:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5 transactionID:(unsigned long long)arg6 reply:(CDUnknownBlockType)arg7;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseEnteredAtPosition:(struct CGPoint)arg2 modifiers:(unsigned long long)arg3 oscData:(id)arg4 parameters:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseEnteredAtPositionX:(double)arg2 positionY:(double)arg3 modifiers:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5 transactionID:(unsigned long long)arg6 reply:(CDUnknownBlockType)arg7;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseMovedAtPosition:(struct CGPoint)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseMovedAtPositionX:(double)arg2 positionY:(double)arg3 activePart:(long long)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseUpAtPosition:(struct CGPoint)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseUpAtPositionX:(double)arg2 positionY:(double)arg3 activePart:(long long)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseDraggedAtPosition:(struct CGPoint)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseDraggedAtPositionX:(double)arg2 positionY:(double)arg3 activePart:(long long)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 mouseDownAtPosition:(struct CGPoint)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseDownAtPositionX:(double)arg2 positionY:(double)arg3 activePart:(long long)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 keyUpAtPosition:(struct CGPoint)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 keyUpAtPositionX:(double)arg2 positionY:(double)arg3 keyPressed:(unsigned short)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 keyDownAtPosition:(struct CGPoint)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 oscData:(id)arg5 parameters:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 transactionID:(unsigned long long)arg8 reply:(CDUnknownBlockType)arg9;
 - (void)OSCPlugin:(unsigned long long)arg1 keyDownAtPositionX:(double)arg2 positionY:(double)arg3 keyPressed:(unsigned short)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 hitTestAtPosition:(struct CGPoint)arg2 oscData:(id)arg3 parameters:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5 transactionID:(unsigned long long)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)OSCPlugin:(unsigned long long)arg1 hitTestAtPositionX:(double)arg2 positionY:(double)arg3 atTime:(CDStruct_1b6d18a9)arg4 transactionID:(unsigned long long)arg5 reply:(CDUnknownBlockType)arg6;
+- (void)OSCPlugin:(unsigned long long)arg1 drawWithWidth:(long long)arg2 height:(long long)arg3 activePart:(long long)arg4 destinationImage:(id)arg5 oscData:(id)arg6 parameters:(id)arg7 atTime:(CDStruct_1b6d18a9)arg8 transactionID:(unsigned long long)arg9 reply:(CDUnknownBlockType)arg10;
 - (void)OSCPlugin:(unsigned long long)arg1 drawWithWidth:(long long)arg2 height:(long long)arg3 activePart:(long long)arg4 destinationImage:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
 - (void)OSCPlugin:(unsigned long long)arg1 setTimingData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)OSCPlugin:(unsigned long long)arg1 drawingCoordinates:(CDUnknownBlockType)arg2;
 - (void)viewServiceListenerEndPoint:(CDUnknownBlockType)arg1;
 - (void)tileablePlugin:(unsigned long long)arg1 renderWithState:(id)arg2 withImageInputs:(id)arg3 withOutput:(id)arg4 rendererRegistryID:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 withReply:(CDUnknownBlockType)arg7;
+- (void)getPluginState:(unsigned long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 transactionID:(unsigned long long)arg3 quality:(unsigned long long)arg4 withParameters:(id)arg5 timingData:(id)arg6 threeDData:(id)arg7 lightingData:(id)arg8 pathData:(id)arg9 colorData:(id)arg10 withReply:(CDUnknownBlockType)arg11;
 - (void)getPluginState:(unsigned long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 quality:(unsigned long long)arg3 withParameters:(id)arg4 timingData:(id)arg5 threeDData:(id)arg6 lightingData:(id)arg7 pathData:(id)arg8 colorData:(id)arg9 withReply:(CDUnknownBlockType)arg10;
 - (void)getTileablePlugin:(unsigned long long)arg1 tileROI:(struct FxRect)arg2 forInput:(int)arg3 withInputImages:(id)arg4 outputImage:(id)arg5 pluginState:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7 withReply:(CDUnknownBlockType)arg8;
 - (void)getTileablePlugin:(unsigned long long)arg1 DOD:(struct FxRect)arg2 withImageInputs:(id)arg3 outputImage:(id)arg4 pluginState:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6 withReply:(CDUnknownBlockType)arg7;
@@ -65,6 +76,7 @@
 - (id)apiManagerForPluginSessionID:(unsigned long long)arg1;
 - (unsigned int)checkOptionalMethods:(id)arg1;
 - (id)pluginForSession:(unsigned long long)arg1 withError:(id *)arg2;
+- (id)hostAppAPIMediatorAsyncForFunction:(const char *)arg1 pluginUUID:(id)arg2 sessionID:(unsigned long long)arg3;
 - (id)hostAPIMediatorAsyncForFunction:(const char *)arg1;
 - (id)hostAPIMediatorSyncForFunction:(const char *)arg1;
 - (void)dealloc;

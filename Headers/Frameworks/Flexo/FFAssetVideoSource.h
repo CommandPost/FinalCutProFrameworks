@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (Class)streamClass;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (long long)timecodeDisplayDropFrame;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (id)proxyContext:(id)arg1;
 - (id)inputVideoSource;
 - (void)dealloc;

@@ -9,12 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFImageAbsoluteOutputFormatWithDitherState : FFImageAbsoluteOutputFormat
 {
-    BOOL _enableDither;
     BOOL _dither;
 }
 
 @property BOOL dither; // @synthesize dither=_dither;
-@property(readonly) BOOL enableDither; // @synthesize enableDither=_enableDither;
 - (id)initWithPixelFormatWithDither:(CDStruct_02fb8bfc *)arg1 colorSpace:(struct CGColorSpace *)arg2;
 
 @end

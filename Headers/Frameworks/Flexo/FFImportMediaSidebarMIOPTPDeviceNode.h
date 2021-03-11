@@ -6,12 +6,12 @@
 
 #import <Flexo/FFMediaSidebarNode.h>
 
-#import <Flexo/FFImportMediaSidebarCellAdornmentProtocol-Protocol.h>
+#import <Flexo/FFImportMediaSidebaNodeAdornmentProtocol-Protocol.h>
 
 @class NSProgressIndicator;
 
 __attribute__((visibility("hidden")))
-@interface FFImportMediaSidebarMIOPTPDeviceNode : FFMediaSidebarNode <FFImportMediaSidebarCellAdornmentProtocol>
+@interface FFImportMediaSidebarMIOPTPDeviceNode : FFMediaSidebarNode <FFImportMediaSidebaNodeAdornmentProtocol>
 {
     BOOL _settitngTitle;
     NSProgressIndicator *_progressIndicator;
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property(retain) NSProgressIndicator *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 - (id)leftAdornmentView;
 - (id)rightAdornmentView;
-- (void)redraw;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)ptpDevice;
 - (id)iconImage:(BOOL)arg1;

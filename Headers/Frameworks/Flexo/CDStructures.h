@@ -2401,6 +2401,7 @@ struct OZChannelButton {
     struct PCString _field21;
     void *_field22;
     struct PCString _field23;
+    _Bool _field24;
 };
 
 struct OZChannelColorNoAlpha {
@@ -4752,6 +4753,10 @@ struct atomic<void *> {
     struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
         _Atomic void *__a_value;
     } __a_;
+};
+
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct auto_array<char> {

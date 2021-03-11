@@ -23,7 +23,7 @@
     NSString *_repType;
     NSString *_projectRelativePath;
     int _organizeState;
-    int _syncStatus;
+    _Atomic int _syncStatus;
     NSString *_md5Seed;
     NSArray *_additionalFilenames;
     BOOL _showRepAsMissing;

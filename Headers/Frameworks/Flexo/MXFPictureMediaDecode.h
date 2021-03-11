@@ -15,8 +15,11 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _width;
     unsigned int _height;
+    unsigned int _sampledWidth;
+    unsigned int _sampledHeight;
     unsigned int _storedWidth;
     unsigned int _storedHeight;
+    int _displayXOffset;
     int _displayYOffset;
     CDStruct_2689111f _aspectRatio;
     struct MXFScanInfo *_scanInfo;
@@ -33,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_2689111f aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property(readonly) unsigned int storedHeight; // @synthesize storedHeight=_storedHeight;
 @property(readonly) unsigned int storedWidth; // @synthesize storedWidth=_storedWidth;
+@property(readonly) unsigned int sampledWidth; // @synthesize sampledWidth=_sampledWidth;
+@property(readonly) int displayXOffset; // @synthesize displayXOffset=_displayXOffset;
 @property(readonly) unsigned int width; // @synthesize width=_width;
 - (void)decodeEssenceSpecificWithDescriptor:(const struct MXKLV *)arg1 inSubDescriptor:(const struct MXKLV *)arg2 pictureEssenceCoding:(const struct MXKey16 *)arg3;
 - (int)hevcCodecWithProfile:(unsigned char)arg1 level:(unsigned char)arg2 maxBitRate:(unsigned int)arg3 codedKind:(unsigned char)arg4;
@@ -53,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (int)codecAndWrappingWithEssenceContainers:(const struct MXArray *)arg1 essenceContainer:(const struct MXKey16 *)arg2;
 - (int)codecTypeWithEssenceCodec:(const struct MXKey16 *)arg1;
 - (void)decodeHDR10MetadataWithDescriptor:(const struct MXKLV *)arg1;
+- (void)decodeSizesAndOffsets:(const struct MXKLV *)arg1;
 - (unsigned int)uint32PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
 - (unsigned short)uint16PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
 - (unsigned char)uint8PictureMetadataWithKey:(int)arg1;
@@ -60,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)setWithJ2KBitDepth:(unsigned char)arg1 isLossLess:(BOOL)arg2;
 - (void)setWithMPEGWidth:(unsigned int)arg1 height:(unsigned int)arg2 bitRate:(unsigned int)arg3;
 @property(readonly) int displayYOffset;
+@property(readonly) unsigned int sampledFrameHeight;
 @property(readonly) unsigned int frameHeight;
 - (void)dealloc;
 - (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXUMID *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4 subDescriptor:(const struct MXKLV *)arg5 essenceContainers:(const struct MXArray *)arg6 mxfVersion:(unsigned int)arg7;

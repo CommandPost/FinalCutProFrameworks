@@ -8,13 +8,14 @@
 
 @interface PAEFxTransactionProcessor : NSObject
 {
-    struct PCMutex _incomingTransactionLock;
+    struct PCRecursiveMutex _incomingTransactionLock;
     struct PCMutex _outgoingTransactionLock;
     struct __CFRunLoopObserver *_observerRef;
     unsigned long long _nextTransactionID;
     map_9151994f _registeredPlugins;
     vector_17e0fc00 _outgoingTransactions;
     map_8bb409b5 _transactionSemaphoreMap;
+    set_0f820a0b _ignoredTransactions;
     queue_a1617091 _incomingTransactions;
 }
 
@@ -22,6 +23,7 @@
 + (id)sharedTransactionProcessor;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property set_0f820a0b ignoredTransactions; // @synthesize ignoredTransactions=_ignoredTransactions;
 @property map_8bb409b5 transactionSemaphoreMap; // @synthesize transactionSemaphoreMap=_transactionSemaphoreMap;
 @property vector_17e0fc00 outgoingTransactions; // @synthesize outgoingTransactions=_outgoingTransactions;
 @property queue_a1617091 incomingTransactions; // @synthesize incomingTransactions=_incomingTransactions;
@@ -35,15 +37,22 @@
 - (void)flushAllIncomingOSCTransactions;
 - (void)flushIncomingTransactionsWithID:(unsigned long long)arg1;
 - (id)addIncomingTransaction:(id)arg1;
+- (id)semaphoreForTransactionID:(unsigned long long)arg1;
+- (void)processTransactionArray:(id)arg1;
 - (BOOL)processPendingTransactionsUntilEndForTransactionID:(unsigned long long)arg1 pluginUUID:(id)arg2 sessionID:(long long)arg3;
+- (void)processPendingTransactionsWithID:(unsigned long long)arg1;
 - (void)processPendingTransactions;
 - (void)processPendingTransactionsForUUID:(id)arg1 sessionID:(long long)arg2;
 - (void)processOSCTransaction:(id)arg1 forPlugin:(id)arg2;
 - (void)processKeyframeTransaction:(id)arg1 forPlugin:(id)arg2;
 - (void)processParameterTransaction:(id)arg1 forPlugin:(id)arg2;
 - (id)nextIncomingTransactionWithID:(unsigned long long)arg1;
+- (BOOL)peekAny:(int)arg1 forPlugin:(id)arg2;
 - (id)nextIncomingTransaction;
 - (id)nextIncomingTransactionIfNonNullID;
+- (BOOL)isTransactionIDIgnored:(unsigned long long)arg1;
+- (void)removeTransactionIDFromIgnoreList:(unsigned long long)arg1;
+- (void)addTransactionIDtoIgnoreList:(unsigned long long)arg1;
 - (unsigned long long)getNextTransactionID;
 - (void)unregisterPlugin:(id)arg1 forUUID:(id)arg2 withSessionID:(unsigned long long)arg3;
 - (void)registerPlugin:(id)arg1 forUUID:(id)arg2 withSessionID:(unsigned long long)arg3;

@@ -6,12 +6,12 @@
 
 #import <Flexo/FFMediaSidebarNode.h>
 
-#import <Flexo/FFImportMediaSidebarCellAdornmentProtocol-Protocol.h>
+#import <Flexo/FFImportMediaSidebaNodeAdornmentProtocol-Protocol.h>
 
 @class NSButton, NSProgressIndicator;
 
 __attribute__((visibility("hidden")))
-@interface FFImportMediaSidebarDeviceNode : FFMediaSidebarNode <FFImportMediaSidebarCellAdornmentProtocol>
+@interface FFImportMediaSidebarDeviceNode : FFMediaSidebarNode <FFImportMediaSidebaNodeAdornmentProtocol>
 {
     NSProgressIndicator *_indeterminateProgressIndicator;
     NSButton *_cancelButton;
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(retain) NSProgressIndicator *indeterminateProgressIndicator; // @synthesize indeterminateProgressIndicator=_indeterminateProgressIndicator;
 - (id)leftAdornmentView;
 - (id)rightAdornmentView;
-- (void)redraw;
 - (void)setupAdornmentViews;
 - (void)cancel:(id)arg1;
 - (void)eject:(id)arg1;

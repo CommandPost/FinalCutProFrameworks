@@ -21,18 +21,24 @@
     NSLock *threadLock;
     NSString *pluginUUID;
     map_dba1109d threadTransactions;
+    map_76ca1c76 threadUndoDepth;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
+@property map_76ca1c76 threadUndoDepth; // @synthesize threadUndoDepth;
 @property map_dba1109d threadTransactions; // @synthesize threadTransactions;
 @property(retain) NSLock *threadLock; // @synthesize threadLock;
+- (void)setBulkKeyframes:(id)arg1 parameters:(id)arg2 undoGroupName:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)clearAllParameterTransactions;
 - (id)pendingParameterTransactions;
 - (void)setIncomingParameterTransactions:(id)arg1;
 - (BOOL)endUndoGroup;
 - (BOOL)startUndoGroup:(id)arg1;
+- (void)decrementUndoDepth;
+- (void)incrementUndoDepth;
+- (long long)undoDepth;
 - (BOOL)parameterIndex:(unsigned long long *)arg1 forParameterID:(unsigned int)arg2;
 - (BOOL)setAsDefaultsAtTime:(CDStruct_1b6d18a9)arg1 withError:(id *)arg2;
 - (id)setPopupMenuParameter:(unsigned int)arg1 entries:(id)arg2 defaultValue:(unsigned int)arg3;
@@ -96,6 +102,7 @@
 - (BOOL)addFloatSliderWithName:(id)arg1 parameterID:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 delta:(double)arg8 parameterFlags:(unsigned int)arg9;
 - (unsigned int)removeCustomUIFlag:(unsigned int)arg1 fromParameterNamed:(id)arg2 withID:(unsigned int)arg3;
 - (BOOL)addLiveParameterTransaction:(id)arg1 forFunction:(const char *)arg2;
+- (void)addOutgoingTransaction:(id)arg1;
 - (id)outgoingTransactions;
 - (id)incomingTransactions;
 - (void)dealloc;

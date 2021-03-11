@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)addIsSDAnamorphToVideoDescriptor:(struct __CFDictionary *)arg1 isSDAnamorph:(BOOL)arg2;
 - (int)getProResAlphaMode:(struct opaqueCMFormatDescription *)arg1;
 - (int)getProResAlphaSampleDepth:(char *)arg1 dataSize:(int)arg2;
 - (void)setMasterDisplayData:(struct opaqueCMFormatDescription *)arg1;

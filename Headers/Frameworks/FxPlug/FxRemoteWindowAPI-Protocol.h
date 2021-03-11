@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSView;
-
-@protocol FFImportMediaSidebarCellAdornmentProtocol
-- (NSView *)leftAdornmentView;
-- (NSView *)rightAdornmentView;
+@protocol FxRemoteWindowAPI
+- (void)remoteWindowOfSize:(struct CGSize)arg1 reply:(void (^)(NSView *, NSError *))arg2;
 @end
 

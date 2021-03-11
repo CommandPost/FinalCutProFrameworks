@@ -6,6 +6,7 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
+#import <Ozone/FxOnScreenControlAPIPrivate-Protocol.h>
 #import <Ozone/FxOnScreenControlAPI_v2-Protocol.h>
 #import <Ozone/FxOnScreenControlAPI_v3-Protocol.h>
 #import <Ozone/FxOnScreenControlAPI_v4-Protocol.h>
@@ -14,7 +15,7 @@
 
 @class NSCursor, NSString;
 
-@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3, FxOnScreenControlAPI_v4, PAEOSCXPCConnectionDelegate>
+@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3, FxOnScreenControlAPI_v4, FxOnScreenControlAPIPrivate, PAEOSCXPCConnectionDelegate>
 {
     const struct OZRenderState *_state;
     PCRect_b601f9f3 _bounds;
@@ -49,6 +50,7 @@
 - (double)canvasPixelAspectRatio;
 - (double)canvasZoom;
 - (void)convertPointFromSpace:(unsigned long long)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(unsigned long long)arg4 toX:(double *)arg5 toY:(double *)arg6;
+- (id)coordinateTransformationsAtTime:(CDStruct_1b6d18a9)arg1;
 - (int)getActivePart;
 - (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyUpOSC:(id)arg1;

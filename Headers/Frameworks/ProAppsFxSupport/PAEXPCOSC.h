@@ -42,6 +42,7 @@
 - (void)keyUp:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 atFxTime:(CDUnion_2516e51e)arg7;
 - (void)keyDown:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 atFxTime:(CDUnion_2516e51e)arg7;
 - (void)drawOSC:(long long)arg1 height:(long long)arg2 activePart:(long long)arg3 atFxTime:(CDUnion_2516e51e)arg4;
+- (id)coordinateTransformationsAtTime:(CDStruct_198678f7)arg1;
 - (void)setupOSCTiming:(CDStruct_198678f7)arg1;
 - (void)compositeImageToCanvas:(id)arg1;
 - (id)imageTileWithWidth:(long long)arg1 height:(long long)arg2;

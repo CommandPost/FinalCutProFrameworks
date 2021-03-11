@@ -17,7 +17,8 @@
     unsigned long long _holdsReadLockKey;
     struct __CFBag *_readers;
     struct FFThread *_writer;
-    int _writeRequested;
+    _Atomic int _writeRequested;
+    _Atomic int _mainThreadWriteRequested;
     int _readLockCount;
     int _readLockCountInsideWrite;
     int _writeLockCount;
@@ -38,6 +39,7 @@
 - (id)_evenIfDeferredWritePending:(_Bool)arg1;
 - (BOOL)hasReadLockScope;
 - (BOOL)hasWriteLockScope;
+- (BOOL)mainThreadWriterIsWaiting;
 - (BOOL)writerIsWaiting;
 - (BOOL)_hasWriteLock;
 - (void)_writeUnlock;

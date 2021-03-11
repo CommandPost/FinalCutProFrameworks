@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     FFAssetCopyQueue *_copyQueue;
     NSMutableArray *_copyRequests;
     NSError *_error;
-    int _status;
+    _Atomic int _status;
     NSURL *_srcURL;
 }
 

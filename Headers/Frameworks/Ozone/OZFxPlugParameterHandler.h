@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <Ozone/FxAnalysisAPIPrivate-Protocol.h>
 #import <Ozone/FxMixingAPI-Protocol.h>
 #import <Ozone/FxOptionalParameterCreationAPI-Protocol.h>
 #import <Ozone/FxOptionalParameterRetrievalAPI-Protocol.h>
@@ -31,7 +32,7 @@
 
 @class NSString, OZViewControllerGroup;
 
-@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI, OZFxPlugInternalParamAPI, OZViewControllerGroupObserver>
+@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI, OZFxPlugInternalParamAPI, OZViewControllerGroupObserver, FxAnalysisAPIPrivate>
 {
     OZViewControllerGroup *_viewControllerGroup;
     struct stack<OZChannelFolder *, std::__1::deque<OZChannelFolder *, std::__1::allocator<OZChannelFolder *>>> *_folderStack;
@@ -49,6 +50,7 @@
     BOOL _hasPointParam;
     BOOL _isNewGradientColorize;
     BOOL _appTerminating;
+    struct atomic<bool> _pluginRemoved;
     struct OZFxPlugRenderContextManager _threadContextManager;
     struct map<unsigned int, unsigned long long, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned long long>>> *_flagMap;
     BOOL _suppressChannelChanges;
@@ -60,6 +62,11 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(getter=isColorCorrection) BOOL colorCorrection; // @synthesize colorCorrection=_colorCorrection;
+- (BOOL)startAnalysis:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)handleBulkKeyframeUpdates:(id)arg1 parameterUpdates:(id)arg2 errors:(id *)arg3;
+- (void)endBulkChanges;
+- (void)startBulkChanges;
+- (BOOL)isPerformingBulkChange;
 - (id)transactionForParameterID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2 transactionID:(unsigned long long)arg3 pluginSessionID:(unsigned long long)arg4;
 - (BOOL)hasPathParameters;
 - (void)setupImageParamIDs:(void *)arg1;
@@ -250,7 +257,9 @@
 - (void)updateChannelMap;
 - (map_2b94c774 *)channelMap;
 - (void)sendNotifications:(id)arg1;
+- (void)invalidateIfCameraChangedForScene:(struct OZScene *)arg1;
 - (void)sendUpdateEvent;
+- (id)motionEffect;
 - (struct OZFxPlugSharedBase *)getSharedBase;
 - (void)setObjectID;
 - (struct OZSceneNode *)getSceneNode;
@@ -261,6 +270,7 @@
 - (void)setViewControllerGroup:(id)arg1;
 - (void)copyFolderRecursiveFrom:(struct OZChannelFolder *)arg1 To:(struct OZChannelFolder *)arg2 Skip:(int)arg3;
 - (void)copyFolderRecursiveFrom:(struct OZChannelFolder *)arg1 To:(struct OZChannelFolder *)arg2;
+- (void)setPluginRemoved:(BOOL)arg1;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
 - (id)initWithBaseChannel:(struct OZChannelFolder *)arg1 andCopy:(id)arg2 Skip:(int)arg3;

@@ -8,17 +8,19 @@
 
 #import <FxPlug/FxKeyframeAPI_v3-Protocol.h>
 
-@class FxRemotePluginCoordinator, NSString;
+@class FxAPIManagerShim, FxRemotePluginCoordinator, NSString;
 
 @interface FxRemoteKeyframeHandler : NSObject <FxKeyframeAPI_v3>
 {
     FxRemotePluginCoordinator *pluginCoordinator;
+    FxAPIManagerShim *apiManager;
     unsigned long long sessionID;
     NSString *pluginUUID;
 }
 
 @property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property unsigned long long sessionID; // @synthesize sessionID;
+@property FxAPIManagerShim *apiManager; // @synthesize apiManager;
 @property(retain) FxRemotePluginCoordinator *pluginCoordinator; // @synthesize pluginCoordinator;
 - (id)keyframe:(struct FxKeyframe *)arg1 atOrAfterTime:(CDStruct_1b6d18a9)arg2 fromParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
 - (id)keyframe:(struct FxKeyframe *)arg1 atOrBeforeTime:(CDStruct_1b6d18a9)arg2 fromParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
@@ -27,13 +29,15 @@
 - (id)removeKeyframeAtIndex:(unsigned long long)arg1 fromParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)addKeyframe:(const struct FxKeyframe *)arg1 toParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)setKeyframeIndex:(unsigned long long)arg1 withKeyframe:(const struct FxKeyframe *)arg2 forParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)handleKeyframeTransasction:(id)arg1;
 - (id)keyframe:(struct FxKeyframe *)arg1 forParameter:(unsigned long long)arg2 channel:(unsigned long long)arg3 andIndex:(unsigned long long)arg4;
 - (id)keyframeCount:(unsigned long long *)arg1 forParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)channelCount:(unsigned long long *)arg1 forParameter:(unsigned long long)arg2;
+- (unsigned long long)connectionVersion;
 - (id)hostAPIHandlerAsyncForFunction:(const char *)arg1;
 - (id)hostAPIHandlerSyncForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithPluginCoordinator:(id)arg1 pluginUUID:(id)arg2 andHostSessionID:(unsigned long long)arg3;
+- (id)initWithPluginCoordinator:(id)arg1 apiManager:(id)arg2 pluginUUID:(id)arg3 andHostSessionID:(unsigned long long)arg4;
 
 @end
 

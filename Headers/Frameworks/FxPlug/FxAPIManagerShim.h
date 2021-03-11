@@ -35,18 +35,24 @@
     unsigned long long nextUnusedTransactionID;
     unsigned long long analysisState;
     NSLock *analysisLock;
+    struct atomic<bool> pluginRemoved;
+    struct FxUnfairLock currentTimeLock;
     unsigned long long sessionID;
     NSString *pluginUUID;
     map_cd95bc73 liveThreadMap;
+    map_64d2659a currentTimeMap;
     struct _opaque_pthread_mutex_t allowedAPIMutex;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property map_64d2659a currentTimeMap; // @synthesize currentTimeMap;
+@property struct FxUnfairLock currentTimeLock; // @synthesize currentTimeLock;
 @property map_cd95bc73 liveThreadMap; // @synthesize liveThreadMap;
 @property struct _opaque_pthread_mutex_t allowedAPIMutex; // @synthesize allowedAPIMutex;
 @property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property unsigned long long sessionID; // @synthesize sessionID;
+- (void)setOSCTransforms:(id)arg1;
 - (void)clearPathData;
 - (void)setPathData:(id)arg1;
 - (void)clearLightingData;
@@ -54,6 +60,7 @@
 - (void)clear3DData;
 - (void)set3DData:(id)arg1;
 - (void)setTimingData:(id)arg1;
+- (void)remoteWindowOfSize:(struct CGSize)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)documentID:(unsigned long long *)arg1 error:(id *)arg2;
 - (BOOL)mediaFolderURL:(id *)arg1 error:(id *)arg2;
 - (BOOL)movePlayheadToTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
@@ -90,8 +97,12 @@
 - (void)setAllowedAPI:(unsigned long long)arg1;
 - (unsigned long long)getAllowedAPI;
 - (void)clearAllParameterTransactions;
+- (void)addOutgoingTransaction:(id)arg1;
 - (id)pendingParameterTransactions;
 - (void)setIncomingParameterTransactions:(id)arg1;
+- (BOOL)wasPluginRemoved;
+- (void)getPluginRemovalError:(id *)arg1;
+- (void)removePlugin;
 - (id)apiForProtocol:(id)arg1;
 - (id)getPluginCoordinator;
 - (id)asyncHandlerForFunction:(const char *)arg1;

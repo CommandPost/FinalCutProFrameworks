@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)newBlockPluginList:(struct __CFString *)arg1;
 - (void)addDocumentBlockedPlugin:(id)arg1;
 - (void)addLibraryBlockedPlugin:(id)arg1 bundleName:(id)arg2 pluginName:(id)arg3 version:(id)arg4;
+- (void)removePlugin:(id)arg1;
 - (void)removeDeferredPluginBundle:(id)arg1;
 - (BOOL)bundleIsDeferred:(id)arg1;
 - (void)loadDeferredPlugin:(id)arg1;

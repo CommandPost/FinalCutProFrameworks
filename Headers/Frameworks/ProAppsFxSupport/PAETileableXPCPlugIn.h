@@ -12,7 +12,7 @@
 #import <ProAppsFxSupport/FxRemoteViewProvider-Protocol.h>
 #import <ProAppsFxSupport/FxTileableEffect-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString, NSXPCConnection;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSString, NSViewController, NSWindow, NSXPCConnection;
 @protocol FxCustomParameterActionAPI_v3, PROAPIAccessing;
 
 @interface PAETileableXPCPlugIn : NSObject <FxTileableEffect, FxFilter, FxGenerator, FxCommandHandler, FxRemoteViewProvider>
@@ -33,16 +33,23 @@
     NSMutableArray *remoteViewControllers;
     unsigned int optionalMethodSupport;
     id <FxCustomParameterActionAPI_v3> customParamAPI;
+    NSMutableDictionary *buttonSelectors;
     BOOL hostIsMotion;
     BOOL appIsTerminating;
     struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, PAECachedSize>>> cachedOutputSizes;
     struct PCMutex outputSizesMutex;
     struct vector<unsigned long, std::__1::allocator<unsigned long>> oscTransactionIDs;
     struct PCSharedMutex oscTransactionMutex;
+    NSWindow *remoteWindow;
+    NSViewController *remoteViewController;
 }
 
++ (unsigned long long)segmentStyleToKeyframeStyle:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)closeRemoteWindow;
+- (void)closeWindow:(id)arg1;
+- (void)addWindow:(id)arg1 andViewController:(id)arg2;
 - (void)setPluginAnalysisState:(unsigned long long)arg1;
 - (BOOL)desiredAnalysisTimeRange:(CDStruct_3c1748cc *)arg1 forInputWithTimeRange:(CDStruct_3c1748cc)arg2 error:(id *)arg3;
 - (BOOL)renderDestinationImage:(id)arg1 sourceImages:(id)arg2 pluginState:(id)arg3 atTime:(CDStruct_198678f7)arg4 error:(id *)arg5;
@@ -82,13 +89,14 @@
 - (void)getKeyframeInfoForTransaction:(id)arg1;
 - (void)copyV3Keyframe:(struct FxKeyframe *)arg1 toV2KeyframeInfo:(struct FxKeyframeInfo *)arg2 withV2Time:(CDStruct_198678f7 *)arg3;
 - (void)copyV2KeyframeInfo:(struct FxKeyframeInfo *)arg1 toV3Keyframe:(struct FxKeyframe *)arg2;
-- (unsigned long long)segmentStyleToKeyframeStyle:(unsigned long long)arg1;
 - (unsigned long long)keyframeStyleToSegmentStyle:(unsigned long long)arg1;
 - (void)getKeyframeCountForTransaction:(id)arg1;
 - (void)endKeyframeTransactionUpdates:(id)arg1;
 - (void)getKeyframeChannelCountForTransaction:(id)arg1;
 - (void)removeAllKeyframesForTransaction:(id)arg1;
 - (void)addKeyframeForTransaction:(id)arg1;
+- (void)startAnalysisTransaction:(id)arg1;
+- (void)getAllParametersForTransaction:(id)arg1;
 - (void)getValueForTransaction:(id)arg1;
 - (void)setValueForTransaction:(id)arg1;
 - (void)handleUndoTransaction:(id)arg1;
@@ -104,6 +112,7 @@
 - (void)setFlagsFromTransaction:(id)arg1;
 - (void)removeParameterForTransaction:(id)arg1;
 - (void)addParameterForTransaction:(id)arg1;
+- (void)setProcessingParameterArray:(BOOL)arg1;
 - (void)pluginInstanceAddedToDocument;
 - (BOOL)properties:(id *)arg1 error:(id *)arg2;
 - (BOOL)renderOutput:(id)arg1 withInfo:(CDStruct_6b9ed609)arg2;
@@ -115,15 +124,15 @@
 - (BOOL)frameCleanup;
 - (BOOL)renderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_6b9ed609)arg3;
 - (BOOL)setupInput:(id)arg1 frames:(unsigned long long *)arg2 withPluginState:(id)arg3 renderInfo:(CDStruct_6b9ed609)arg4 forHeliumRef:(HGRef_a9bb4a2e)arg5;
-- (void)setupImageDescriptor:(struct ImageTileDescriptor *)arg1 withSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 atTime:(const CDStruct_198678f7 *)arg4 forImage:(id)arg5;
+- (void)setupImageDescriptor:(struct ImageTileDescriptor *)arg1 withSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 atTime:(const CDStruct_198678f7 *)arg4 forImage:(id)arg5 renderInfo:(CDStruct_6b9ed609)arg6;
 - (PCMatrix44Tmpl_93ed1289)pcMatrixFromFxMatrix:(id)arg1;
 - (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
 - (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_6b9ed609)arg4;
 - (BOOL)usesImagesAtOtherTimes;
 - (BOOL)setupProxySourceImages:(id)arg1 withPluginState:(id)arg2 inputInfo:(CDStruct_4a07eeda)arg3 renderInfo:(CDStruct_6b9ed609)arg4;
-- (id)heliumImageToFxImageTile:(id)arg1 requestSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 mediaTime:(const CDStruct_198678f7 *)arg4 requestError:(id)arg5;
+- (id)heliumImageToFxImageTile:(id)arg1 requestSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 mediaTime:(const CDStruct_198678f7 *)arg4 requestError:(id)arg5 imageInfo:(CDStruct_4a07eeda)arg6 renderInfo:(CDStruct_6b9ed609)arg7;
 - (unsigned long long)colorSpaceForRendering;
-- (void)addPushButtonSelector:(id)arg1 forParameterID:(unsigned int)arg2;
+- (id)addPushButtonSelector:(id)arg1 forParameterID:(unsigned int)arg2;
 - (void)performButtonSelector:(id)arg1;
 - (void)updateRemoteViews;
 - (void)newViewAndControllerForParameterID:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
@@ -141,6 +150,7 @@
 - (id)setupColorGamutAPI;
 - (void)updateHostKeyCommands:(id)arg1;
 - (void)setHostKeyCommands:(id)arg1;
+- (void)removeStateAtTime:(CDStruct_198678f7)arg1;
 - (void)setupPluginStateForThread:(CDStruct_198678f7 *)arg1;
 - (struct PAEStateCacheItem)stateItemAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long)arg2;
 - (id)createStateAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long *)arg2;
@@ -153,6 +163,7 @@
 - (id)loadPluginFonts;
 - (id)currentConnection;
 - (void)updateConnection:(id)arg1;
+- (id)asynchronousRemoteForMethod:(const char *)arg1 withTransactionID:(unsigned long long)arg2;
 - (id)asynchronousRemoteForMethod:(const char *)arg1;
 - (id)synchronousRemoteForMethod:(const char *)arg1;
 - (void)dealloc;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)streamClass;
 - (double)preferredScaleFactorForQuality:(int)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 checkCancelBlock:(CDUnknownBlockType)arg4;
 - (CDStruct_e83c9415)timeRange;
 - (id)nativeVideoProps;
 - (double)rotateAngle;

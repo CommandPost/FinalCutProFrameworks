@@ -8,10 +8,14 @@
 
 #import <FxPlug/FxOnScreenControlAPI_v4-Protocol.h>
 
-@class FxRemotePluginCoordinator, NSString;
+@class FxAPIManagerShim, FxRemotePluginCoordinator, NSLock, NSMutableDictionary, NSString;
 
 @interface FxRemoteOSCHandler : NSObject <FxOnScreenControlAPI_v4>
 {
+    NSLock *transformsLock;
+    NSMutableDictionary *threadTransformationMap;
+    FxAPIManagerShim *apiManager;
+    BOOL usesScreenSpace;
     FxRemotePluginCoordinator *pluginCoordinator;
     unsigned long long hostSessionID;
     NSString *pluginUUID;
@@ -31,10 +35,12 @@
 - (double)canvasPixelAspectRatio;
 - (double)canvasZoom;
 - (void)convertPointFromSpace:(unsigned long long)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(unsigned long long)arg4 toX:(double *)arg5 toY:(double *)arg6;
+- (id)OSCTransformations;
+- (void)setOSCTransformations:(id)arg1;
 - (id)hostAPIHandlerAsyncForFunction:(const char *)arg1;
 - (id)hostAPIHandlerSyncForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithPluginCoordinator:(id)arg1 pluginUUID:(id)arg2 andHostSessionID:(unsigned long long)arg3;
+- (id)initWithPluginCoordinator:(id)arg1 pluginUUID:(id)arg2 apiManager:(id)arg3 andHostSessionID:(unsigned long long)arg4;
 
 @end
 
